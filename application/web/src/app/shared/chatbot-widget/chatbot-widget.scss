@@ -1,0 +1,84 @@
+/* Chatbot Widget Styles */
+.ps-chatbot-widget {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ps-chatbot-widget:hover {
+  transform: scale(1.1);
+}
+
+.ps-chatbot-icon {
+  width: 60px;
+  height: 60px;
+  background: #9fe870;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(159, 232, 112, 0.3);
+  position: relative;
+}
+
+.ps-message-icon {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.2s ease;
+}
+
+.ps-chatbot-widget:hover .ps-message-icon {
+  transform: scale(1.05);
+}
+
+.ps-chatbot-tooltip {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+}
+
+.ps-chatbot-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  border: 5px solid transparent;
+  border-top-color: #333;
+}
+
+.ps-chatbot-widget:hover .ps-chatbot-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Responsive Design for Chatbot Widget */
+@media (max-width: 768px) {
+  .ps-chatbot-widget {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .ps-chatbot-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .ps-message-icon {
+    width: 24px;
+    height: 24px;
+  }
+}

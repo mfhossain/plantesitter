@@ -1,0 +1,24 @@
+<!-- Chat Interface -->
+<div class="ps-chat-interface" [class.ps-chat-open]="isOpen">
+  <div class="ps-chat-header">
+    <h3>PlanteSitter Support</h3>
+    <button class="ps-chat-close" (click)="onCloseChat()">×</button>
+  </div>
+  <div class="ps-chat-messages" #chatMessages>
+    <div class="ps-message ps-bot-message">
+      <div class="ps-message-content">
+        Hej! Jeg er her for at hjælpe dig med dine plante-passning spørgsmål. Hvad kan jeg hjælpe med?
+      </div>
+    </div>
+  </div>
+  <div class="ps-chat-input">
+    <input 
+      type="text" 
+      placeholder="Skriv din besked her..." 
+      [(ngModel)]="userMessage"
+      (keyup.enter)="sendMessage()"
+      #messageInput
+    >
+    <button (click)="sendMessage()">Send</button>
+  </div>
+</div>

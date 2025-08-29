@@ -1,0 +1,63 @@
+<section class="ps-cta-section-alt">
+  <div class="ps-container">
+    <div class="ps-cta-content">
+      <!-- Stats/Info -->
+      <div class="ps-stats">
+        <div class="ps-icon-wrap">
+          <div class="ps-icon">
+            <i class="ps-icon-dot"></i>
+          </div>
+        </div>
+        <p class="ps-stats-text">Over 500 ledige jobs</p>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="ps-cta-main">
+        <h2 class="ps-cta-title">
+          <span class="ps-link-wrap">
+            <a class="ps-link-text" role="button" href="">
+              <span class="ps-text">Snart i App Store</span>
+            </a>
+          </span>
+        </h2>
+      </div>
+
+      <!-- Social Media Links -->
+      <div class="ps-social-links">
+        <div class="ps-social-item">
+          <p class="ps-social-text">
+            <span class="ps-link-wrap">
+              <a target="_blank" class="ps-link-text" role="button" href="https://www.tiktok.com/@plantesitter.app">
+                TikTok
+              </a>
+            </span>
+          </p>
+        </div>
+        <div class="ps-social-item">
+          <p class="ps-social-text">
+            <span class="ps-link-wrap">
+              <a target="_blank" class="ps-link-text" role="button" href="https://www.instagram.com/plantesitter.app/">
+                Instagram
+              </a>
+            </span>
+          </p>
+        </div>
+        <div class="ps-social-item">
+            <p class="ps-social-text">
+              <span class="ps-link-wrap">
+                <a target="_blank" class="ps-link-text" role="button" href="https://www.facebook.com/profile.php?id=61580162362284">
+                  Facebook
+                </a>
+              </span>
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chatbot Widget -->
+  <app-chatbot-widget (toggleChat)="toggleChat()"></app-chatbot-widget>
+
+  <!-- Chat Interface -->
+  <app-chat-interface [isOpen]="isChatOpen" (closeChat)="toggleChat()"></app-chat-interface>
+</section>

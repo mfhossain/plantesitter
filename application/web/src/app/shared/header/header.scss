@@ -1,0 +1,19 @@
+.ps-header { position: sticky; top: 0; background: #ffffff; border-bottom: 1px solid #eee; z-index: 10; }
+.ps-container { display: flex; align-items: center; justify-content: space-between; }
+.ps-brand { font-weight: 800; font-size: 20px; letter-spacing: .2px; color: #2C6B28; }
+.ps-nav { display: flex; align-items: center; gap: 16px; }
+.ps-link { 
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.ps-link:hover { 
+  text-decoration: none;
+  color: #2C6B28; /* Bright green-yellowish color */
+  text-shadow: 0 0 10px rgba(154, 205, 50, 0.6); /* Glowing effect */
+  transform: scale(1.05); /* Slight scale effect */
+}
+.ps-badge { background: #2C6B28; color: #fff; }
+
+

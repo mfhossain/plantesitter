@@ -1,0 +1,115 @@
+.ps-hero { 
+  background: linear-gradient(180deg, #f8fafc, #fff); 
+  padding: 56px 0; 
+}
+
+.ps-hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: stretch;
+}
+
+.ps-hero-text {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ps-hero h1 { 
+  font-size: 56px; 
+  line-height: 1.1; 
+  margin: 0 0 20px; 
+  font-weight: 700;
+  color: #111;
+}
+
+.ps-lead { 
+  font-size: 18px; 
+  color: #4b5563; 
+  margin-bottom: 24px; 
+  line-height: 1.6;
+}
+
+.ps-bullets { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px 16px; 
+  padding: 0; 
+  margin: 0; 
+  list-style: none; 
+}
+
+.ps-bullets li { 
+  background: #111; 
+  color: #fff; 
+  padding: 8px 16px; 
+  border-radius: 999px; 
+  font-size: 14px; 
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.ps-bullets li:hover {
+  background: #2C6B28; /* Green background on hover */
+  transform: scale(1.05);
+}
+
+.ps-hero-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ps-hero-video-element {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  pointer-events: none;
+}
+
+/* Hide video controls completely */
+.ps-hero-video-element::-webkit-media-controls {
+  display: none !important;
+}
+
+.ps-hero-video-element::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+.ps-hero-video-element::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+.ps-hero-video-element::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ps-hero-content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .ps-hero h1 {
+    font-size: 42px;
+  }
+  
+  .ps-hero-text {
+    text-align: center;
+  }
+  
+  .ps-hero-video-element {
+    height: auto;
+    max-height: 400px;
+  }
+}
+
+

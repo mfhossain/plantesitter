@@ -1,0 +1,11 @@
+.ps-footer { background: #2C6B28; color: #fff; padding: 40px 20px; margin-top: 40px; }
+.ps-container { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 20px; }
+.ps-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.ps-subtitle { color: #ddd; margin: 4px 0; }
+.ps-legal { color: #bbb; margin-bottom: 6px; }
+.ps-small { color: #888; margin-bottom: 10px; }
+.ps-link { }
+.ps-link:hover { }
+.ps-legal-links { display: flex; flex-direction: column; gap: 6px; }
+
+

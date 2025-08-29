@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Common utilities and tokens */
+
+/* Layout container */
+.ps-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+
+/* Links */
+.ps-link {
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+}
+.ps-link:hover { text-decoration: underline; }
+
+/* Badge/Pill */
+.ps-badge {
+  background: #111;
+  color: #fff;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+  
