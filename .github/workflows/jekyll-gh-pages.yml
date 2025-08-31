@@ -27,12 +27,9 @@ jobs:
         with:
           node-version: '20'
 
-      # Change to the Angular project directory
-      - name: Change to Angular directory
-        run: cd application/web
-
       # Install deps (use ci if lockfile exists; otherwise install)
       - name: Install dependencies
+        working-directory: application/web
         run: |
           if [ -f package-lock.json ]; then
             npm ci
@@ -48,16 +45,18 @@ jobs:
 
       # Build Angular application
       - name: Build Angular
+        working-directory: application/web
         run: npm run build
 
       # Copy index.html -> 404.html for SPA routing
       - name: Prepare 404 fallback
+        working-directory: application/web
         run: |
           cp "dist/plantesitter/browser/index.html" "dist/plantesitter/browser/404.html"
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/plantesitter/browser
+          path: application/web/dist/plantesitter/browser
 
   deploy:
     needs: build
