@@ -1,11 +1,112 @@
-.ps-footer { background: #2C6B28; color: #fff; padding: 40px 20px; margin-top: 40px; }
-.ps-container { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 20px; }
-.ps-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-.ps-subtitle { color: #ddd; margin: 4px 0; }
-.ps-legal { color: #bbb; margin-bottom: 6px; }
-.ps-small { color: #888; margin-bottom: 10px; }
-.ps-link { }
-.ps-link:hover { }
-.ps-legal-links { display: flex; flex-direction: column; gap: 6px; }
+.ps-footer { 
+  background: #2C6B28; 
+  color: #fff; 
+  padding: 40px 20px; 
+  margin-top: 40px; 
+}
+
+.ps-container { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr 1.2fr; 
+  gap: 20px; 
+}
+
+.ps-title { 
+  font-size: 18px; 
+  font-weight: 700; 
+  margin-bottom: 8px; 
+}
+
+.ps-subtitle { 
+  color: #ddd; 
+  margin: 4px 0; 
+}
+
+.ps-legal { 
+  color: #bbb; 
+  margin-bottom: 6px; 
+}
+
+.ps-small { 
+  color: #888; 
+  margin-bottom: 10px; 
+}
+
+.ps-link { 
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.ps-link:hover { 
+  opacity: 0.8;
+}
+
+.ps-legal-links { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 6px; 
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .ps-footer {
+    padding: 30px 16px;
+    margin-top: 30px;
+  }
+  
+  .ps-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .ps-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .ps-subtitle {
+    font-size: 14px;
+    margin: 6px 0;
+  }
+  
+  .ps-legal {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .ps-small {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  
+  .ps-legal-links {
+    gap: 8px;
+  }
+  
+  .ps-link {
+    font-size: 14px;
+    padding: 4px 0;
+  }
+}
+
+/* Tablet responsive styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ps-footer {
+    padding: 35px 20px;
+  }
+  
+  .ps-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+  
+  .ps-container > div:last-child {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
 
 

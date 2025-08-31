@@ -1,4 +1,13 @@
-.ps-container { padding: 24px 20px; }
+.ps-container { 
+  padding: 24px 20px; 
+}
+
+/* Mobile responsive adjustments for chat widget */
+@media (max-width: 768px) {
+  .ps-container { 
+    padding: 16px 16px 80px 16px; /* Add bottom padding for chat widget */
+  }
+}
 .ps-hero { background: linear-gradient(180deg, #f8fafc, #fff); padding: 56px 0; }
 .ps-hero h1 { font-size: 40px; line-height: 1.1; margin: 0 0 12px; }
 .ps-lead { font-size: 18px; color: #4b5563; margin-bottom: 16px; }

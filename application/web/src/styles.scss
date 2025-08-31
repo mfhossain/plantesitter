@@ -9,6 +9,45 @@
   padding: 12px 20px;
 }
 
+/* Mobile responsive adjustments for chat widget */
+@media (max-width: 768px) {
+  .ps-container {
+    padding: 12px 16px;
+    /* Ensure content doesn't overlap with chat widget */
+    padding-bottom: 80px; /* Add bottom padding to account for chat widget */
+  }
+  
+  /* Ensure all sections have proper mobile spacing */
+  .planteejer-page,
+  .plantepasser-page {
+    min-height: 100vh;
+    padding-bottom: 20px;
+  }
+  
+  /* Ensure all components are properly centered on mobile */
+  .planteejer-section,
+  .plantepasser-section {
+    text-align: center;
+  }
+  
+  /* Adjust grid layouts for mobile */
+  .benefits-grid,
+  .steps-grid,
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    max-width: 100% !important;
+  }
+  
+  /* Ensure proper spacing for all cards */
+  .benefit-item,
+  .step-item,
+  .feature-item {
+    margin: 0 auto;
+    max-width: 100% !important;
+  }
+}
+
 /* Links */
 .ps-link {
   color: #111;

@@ -70,15 +70,27 @@
   .ps-chatbot-widget {
     bottom: 20px;
     right: 20px;
+    /* Ensure it doesn't interfere with content */
+    z-index: 9999;
   }
   
   .ps-chatbot-icon {
     width: 50px;
     height: 50px;
+    /* Add a subtle shadow to make it stand out from content */
+    box-shadow: 0 4px 20px rgba(159, 232, 112, 0.4);
   }
   
   .ps-message-icon {
     width: 24px;
     height: 24px;
+  }
+  
+  /* Adjust tooltip position on mobile */
+  .ps-chatbot-tooltip {
+    bottom: 60px;
+    right: -10px;
+    font-size: 11px;
+    padding: 6px 10px;
   }
 }
