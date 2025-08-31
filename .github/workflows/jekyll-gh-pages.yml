@@ -1,4 +1,4 @@
-name: Deploy Angular to GitHub Pages
+name: Deploy Angular to Custom Domain
 
 on:
   push:
@@ -14,8 +14,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # Set this to your repo name for project sites (e.g., plantesitter)
-  REPO_NAME: plantesitter
+  # Custom domain deployment
+  DOMAIN: plantesitter.dk
 
 jobs:
   build:
@@ -46,7 +46,7 @@ jobs:
       # Build Angular application
       - name: Build Angular
         working-directory: application/web
-        run: npm run build -- --base-href "/plantesitter/"
+        run: npm run build
 
       # Copy index.html -> 404.html for SPA routing
       - name: Prepare 404 fallback
