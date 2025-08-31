@@ -4,21 +4,44 @@
     <h3>PlanteSitter Support</h3>
     <button class="ps-chat-close" (click)="onCloseChat()">×</button>
   </div>
+  
+  <!-- WhatsApp Only -->
+  <div class="ps-whatsapp-header">
+    <div class="ps-whatsapp-info">
+      <span class="ps-channel-icon">📱</span>
+      <span class="ps-channel-name">WhatsApp Support</span>
+    </div>
+  </div>
+
   <div class="ps-chat-messages" #chatMessages>
     <div class="ps-message ps-bot-message">
       <div class="ps-message-content">
-        Hej! Jeg er her for at hjælpe dig med dine plante-passning spørgsmål. Hvad kan jeg hjælpe med?
+        Hej! Jeg er her for at hjælpe dig med dine plante-passning spørgsmål. Send din besked nedenfor, og jeg vil svare dig direkte på WhatsApp.
       </div>
     </div>
   </div>
+  
   <div class="ps-chat-input">
-    <input 
-      type="text" 
-      placeholder="Skriv din besked her..." 
-      [(ngModel)]="userMessage"
-      (keyup.enter)="sendMessage()"
-      #messageInput
-    >
-    <button (click)="sendMessage()">Send</button>
+    <div class="ps-input-wrapper">
+      <input 
+        type="text" 
+        [placeholder]="getPlaceholderText()"
+        [(ngModel)]="userMessage"
+        (keyup.enter)="sendMessage()"
+        #messageInput
+        [disabled]="isSending"
+      >
+      <button 
+        class="ps-send-button" 
+        (click)="sendMessage()"
+        [disabled]="!userMessage.trim() || isSending"
+      >
+        <span *ngIf="!isSending">📱</span>
+        <span *ngIf="isSending" class="ps-loading">⏳</span>
+      </button>
+    </div>
+    <div class="ps-channel-info">
+      <small>Din besked vil blive sendt direkte til vores WhatsApp support</small>
+    </div>
   </div>
 </div>

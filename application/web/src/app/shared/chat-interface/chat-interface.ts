@@ -1,6 +1,8 @@
 import { Component, ViewChild, ElementRef, AfterViewInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CHAT_CONFIG } from './chat-config';
+import { TwilioWhatsAppService } from './twilio-whatsapp.service';
 
 @Component({
   selector: 'app-chat-interface',
@@ -15,6 +17,15 @@ export class ChatInterface implements AfterViewInit {
   @Output() closeChat = new EventEmitter<void>();
 
   userMessage = '';
+  selectedChannel: 'whatsapp' = 'whatsapp';
+  isSending = false;
+
+  // Configuration
+  config = CHAT_CONFIG;
+
+  constructor(
+    private twilioWhatsAppService: TwilioWhatsAppService
+  ) {}
 
   ngAfterViewInit() {
     // Scroll to bottom of chat messages
@@ -26,18 +37,79 @@ export class ChatInterface implements AfterViewInit {
   }
 
   sendMessage() {
-    if (this.userMessage.trim()) {
-      // Add user message
-      this.addMessage(this.userMessage, 'user');
-      
-      // Simulate bot response
-      setTimeout(() => {
-        this.addBotResponse(this.userMessage);
-      }, 1000);
-      
-      this.userMessage = '';
+    if (this.userMessage.trim() && !this.isSending) {
+      this.sendToWhatsApp();
     }
   }
+
+
+
+  private sendToWhatsApp() {
+    this.isSending = true;
+    
+    // Add user message to chat
+    this.addMessage(this.userMessage, 'user');
+    
+    // Format WhatsApp message
+    const formattedMessage = this.formatWhatsAppMessage(this.userMessage);
+    
+    // Check if direct API is enabled and configured
+    if (this.config.whatsapp.useDirectAPI && this.twilioWhatsAppService.isConfigured()) {
+      // Send directly via Twilio WhatsApp API
+      this.addMessage('Jeg sender din besked direkte via WhatsApp...', 'bot');
+      
+      this.twilioWhatsAppService.sendToBusiness(formattedMessage).subscribe({
+        next: (response: any) => {
+          if (response.success) {
+            this.addMessage('✅ Din besked er blevet sendt direkte via WhatsApp!', 'bot');
+          } else {
+            this.addMessage('❌ Kunne ikke sende via API. Åbner WhatsApp web som backup...', 'bot');
+            setTimeout(() => {
+              this.twilioWhatsAppService.openWhatsAppWeb(formattedMessage);
+            }, 1000);
+          }
+          this.isSending = false;
+        },
+        error: (error: any) => {
+          console.error('Twilio WhatsApp API Error:', error);
+          this.addMessage('❌ Kunne ikke sende via API. Åbner WhatsApp web som backup...', 'bot');
+          setTimeout(() => {
+            this.twilioWhatsAppService.openWhatsAppWeb(formattedMessage);
+          }, 1000);
+          this.isSending = false;
+        }
+      });
+    } else {
+      // Fallback to web WhatsApp
+      this.addMessage('Jeg åbner WhatsApp for dig. Din besked er klar til at blive sendt!', 'bot');
+      
+      setTimeout(() => {
+        this.twilioWhatsAppService.openWhatsAppWeb(formattedMessage);
+        this.isSending = false;
+      }, 1500);
+    }
+    
+    this.userMessage = '';
+  }
+
+
+
+  private formatWhatsAppMessage(message: string): string {
+    const timestamp = new Date().toLocaleString('da-DK');
+    const businessName = this.config.whatsapp.businessName;
+    
+    return `Hej ${businessName}!
+
+Jeg har et spørgsmål:
+${message}
+
+Sendt fra PlanteSitter hjemmeside
+${timestamp}`;
+  }
+
+
+
+
 
   private addMessage(message: string, type: 'user' | 'bot') {
     const messagesContainer = this.chatMessages.nativeElement;
@@ -54,18 +126,7 @@ export class ChatInterface implements AfterViewInit {
     this.scrollToBottom();
   }
 
-  private addBotResponse(userMessage: string) {
-    const responses = [
-      'Tak for din besked! Jeg vil gerne hjælpe dig med det.',
-      'Det er et godt spørgsmål. Lad mig tjekke det for dig.',
-      'Jeg kan se du har brug for hjælp. Hvad mere kan jeg hjælpe med?',
-      'Perfekt! Jeg noterer det ned og vender tilbage til dig snart.',
-      'Det lyder interessant! Kan du fortælle mig mere om det?'
-    ];
-    
-    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-    this.addMessage(randomResponse, 'bot');
-  }
+
 
   private scrollToBottom() {
     setTimeout(() => {
@@ -73,5 +134,9 @@ export class ChatInterface implements AfterViewInit {
         this.chatMessages.nativeElement.scrollTop = this.chatMessages.nativeElement.scrollHeight;
       }
     }, 100);
+  }
+
+  getPlaceholderText(): string {
+    return 'Skriv din besked til WhatsApp...';
   }
 }

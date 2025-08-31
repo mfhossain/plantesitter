@@ -61,6 +61,36 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
+/* WhatsApp Header Styles */
+.ps-whatsapp-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.ps-whatsapp-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0f0f0f;
+}
+
+.ps-channel-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ps-channel-icon {
+  font-size: 20px;
+  color: #25d366;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
 .ps-chat-messages {
   flex: 1;
   padding: 20px;
@@ -108,7 +138,14 @@
   padding: 20px;
   border-top: 1px solid #e2e8f0;
   display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ps-input-wrapper {
+  display: flex;
   gap: 10px;
+  align-items: center;
 }
 
 .ps-chat-input input {
@@ -125,7 +162,7 @@
   border-color: #9fe870;
 }
 
-.ps-chat-input button {
+.ps-send-button {
   background: #9fe870;
   color: #0f0f0f;
   border: none;
@@ -134,11 +171,62 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ps-chat-input button:hover {
+.ps-send-button:hover:not(:disabled) {
   background: #8ed760;
+  transform: translateY(-1px);
+}
+
+.ps-send-button:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.ps-channel-info {
+  text-align: center;
+  color: #64748b;
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.ps-channel-info small {
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+
+
+/* Loading state */
+.ps-loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Disabled state */
+.ps-chat-input input:disabled {
+  background: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.ps-send-button:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* Responsive Design for Chat */
