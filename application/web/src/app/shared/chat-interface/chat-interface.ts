@@ -61,9 +61,9 @@ export class ChatInterface implements AfterViewInit {
       this.twilioWhatsAppService.sendToBusiness(formattedMessage).subscribe({
         next: (response: any) => {
           if (response.success) {
-            this.addMessage('✅ Din besked er blevet sendt direkte via WhatsApp!', 'bot');
+            // this.addMessage('✅ Din besked er blevet sendt direkte via WhatsApp!', 'bot');
           } else {
-            this.addMessage('❌ Kunne ikke sende via API. Åbner WhatsApp web som backup...', 'bot');
+            this.addMessage('❌ Kunne ikke sende. Åbner WhatsApp web som backup...', 'bot');
             setTimeout(() => {
               this.twilioWhatsAppService.openWhatsAppWeb(formattedMessage);
             }, 1000);
@@ -71,7 +71,7 @@ export class ChatInterface implements AfterViewInit {
           this.isSending = false;
         },
         error: (error: any) => {
-          console.error('Twilio WhatsApp API Error:', error);
+          console.error('Error:', error);
           this.addMessage('❌ Kunne ikke sende via API. Åbner WhatsApp web som backup...', 'bot');
           setTimeout(() => {
             this.twilioWhatsAppService.openWhatsAppWeb(formattedMessage);
@@ -137,6 +137,6 @@ ${timestamp}`;
   }
 
   getPlaceholderText(): string {
-    return 'Skriv din besked til WhatsApp...';
+    return 'Skriv din besked...';
   }
 }
