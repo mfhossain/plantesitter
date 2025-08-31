@@ -54,7 +54,7 @@ export const environment = {
       businessName: 'PlanteSitter Support',
       defaultMessage: 'Hej! Jeg har et spørgsmål om plante-passning.',
       // Add these new properties:
-      phoneNumberId: '123456789012345', // Your Phone Number ID from step 3
+      phoneNumberId: '', // Your Phone Number ID from step 3
       accessToken: 'EAA...', // Your Access Token from step 4
       useDirectAPI: true // Set to true to enable direct API sending
     },

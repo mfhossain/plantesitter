@@ -38,13 +38,13 @@ export const environment = {
   production: false,
   chat: {
     whatsapp: {
-      phoneNumber: '+4591622791', // Your WhatsApp number
+      phoneNumber: '', // Your WhatsApp number
       businessName: 'PlanteSitter Support',
       defaultMessage: 'Hej! Jeg har et spørgsmål om plante-passning.',
       // Twilio credentials
       twilioAccountSid: 'AC...', // Your Twilio Account SID
       twilioAuthToken: '...', // Your Twilio Auth Token
-      twilioWhatsAppNumber: 'whatsapp:+14155238886', // Twilio sandbox number
+      twilioWhatsAppNumber: '', // Twilio sandbox number
       useDirectAPI: true,
       useBackendProxy: true,
       backendProxyUrl: 'http://localhost:3001'
@@ -93,8 +93,8 @@ export const environment = {
    - Check if you're still in the sandbox (24-hour limit)
 
 ### **Phone Number Format:**
-- **Sandbox**: `whatsapp:+14155238886`
-- **Your number**: `whatsapp:+4591622791`
+- **Sandbox**: ``
+- **Your number**: ``
 - **Always include**: `whatsapp:` prefix
 
 ## 💰 **Pricing**

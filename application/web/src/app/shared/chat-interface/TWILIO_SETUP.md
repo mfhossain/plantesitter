@@ -13,12 +13,12 @@ This guide will help you set up Twilio SMS integration for your PlanteSitter cha
 ### 1.1 Find Your Account SID
 1. Log into your [Twilio Console](https://console.twilio.com/)
 2. Your Account SID is displayed on the dashboard
-3. It looks like: `AC1234567890abcdef1234567890abcdef`
+3. It looks like: ``
 
 ### 1.2 Find Your Auth Token
 1. In the Twilio Console, go to **Settings** → **API Keys**
 2. Click on **Show** next to your Auth Token
-3. It looks like: `1234567890abcdef1234567890abcdef`
+3. It looks like: ``
 
 ### 1.3 Get Your Twilio Phone Number
 1. Go to **Phone Numbers** → **Manage** → **Active numbers**
@@ -43,8 +43,8 @@ export const environment = {
       enabled: true,
       service: 'twilio',
       twilio: {
-        accountSid: 'AC1234567890abcdef1234567890abcdef', // Your Account SID
-        authToken: '1234567890abcdef1234567890abcdef', // Your Auth Token
+        accountSid: '', // Your Account SID
+        authToken: '', // Your Auth Token
         fromNumber: '+1234567890' // Your Twilio phone number
       }
     },

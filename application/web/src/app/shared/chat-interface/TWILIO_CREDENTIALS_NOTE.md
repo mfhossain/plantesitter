@@ -7,12 +7,12 @@ I noticed your Account SID starts with "SK" which is typically a **Signing Key**
 ### Correct Twilio Credential Formats:
 
 #### Account SID
-- ✅ **Correct format**: `AC1234567890abcdef1234567890abcdef`
-- ❌ **Your current**: `SK2656cf84a3ad36bcf40b894e33fb4f0a` (This looks like a Signing Key)
+- ✅ **Correct format**: ``
+- ❌ **Your current**: `` (This looks like a Signing Key)
 
 #### Auth Token
-- ✅ **Correct format**: `1234567890abcdef1234567890abcdef`
-- ✅ **Your current**: `abzAWZQoyGd1deZfFzWqwrHDu3ICRpuY` (This looks correct)
+- ✅ **Correct format**: ``
+- ✅ **Your current**: `` (This looks correct)
 
 ### How to Get the Correct Account SID:
 
@@ -24,9 +24,9 @@ I noticed your Account SID starts with "SK" which is typically a **Signing Key**
 
 ```typescript
 twilio: {
-  accountSid: 'AC1234567890abcdef1234567890abcdef', // Should start with AC
-  authToken: 'abzAWZQoyGd1deZfFzWqwrHDu3ICRpuY', // Your current token looks correct
-  fromNumber: '+4591622791' // Your Twilio phone number
+  accountSid: '', // Should start with AC
+  authToken: '', // Your current token looks correct
+  fromNumber: '+' // Your Twilio phone number
 }
 ```
 
