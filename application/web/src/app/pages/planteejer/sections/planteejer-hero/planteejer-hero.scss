@@ -1,0 +1,35 @@
+.planteejer-hero {
+  text-align: center;
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+
+  .planteejer-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #2c5530;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .planteejer-subtitle {
+    font-size: 1.5rem;
+    color: #666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .planteejer-hero {
+    padding: 60px 0;
+
+    .planteejer-title {
+      font-size: 2.5rem;
+    }
+
+    .planteejer-subtitle {
+      font-size: 1.2rem;
+    }
+  }
+}

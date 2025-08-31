@@ -1,0 +1,135 @@
+.ps-ferie-uden-bekymringer {
+  padding: 80px 0;
+
+  .ps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .ps-ferie-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .ps-ferie-text {
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2c5530;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    > p {
+      font-size: 1.2rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .ps-ferie-benefits {
+    margin-bottom: 2rem;
+
+    .ps-benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+
+      .ps-benefit-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+
+      .ps-benefit-content {
+        h3 {
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: #2c5530;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          color: #666;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .ps-cta {
+    .ps-btn {
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+
+      &.ps-btn-primary {
+        background: linear-gradient(135deg, #2c5530, #4a7c59);
+        color: white;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(44, 85, 48, 0.3);
+        }
+      }
+    }
+  }
+
+  .ps-ferie-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ps-ferie-image-element {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ps-ferie-uden-bekymringer {
+    padding: 60px 0;
+
+    .ps-ferie-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .ps-ferie-text {
+      text-align: center;
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      > p {
+        font-size: 1.1rem;
+      }
+    }
+
+         .ps-ferie-benefits {
+       .ps-benefit-item {
+         text-align: left;
+       }
+     }
+
+     .ps-ferie-image-element {
+       max-width: 300px;
+     }
+   }
+ }
