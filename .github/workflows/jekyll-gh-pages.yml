@@ -46,7 +46,7 @@ jobs:
       # Build Angular application
       - name: Build Angular
         working-directory: application/web
-        run: npm run build
+        run: npm run build -- --base-href "/plantesitter/"
 
       # Copy index.html -> 404.html for SPA routing
       - name: Prepare 404 fallback
