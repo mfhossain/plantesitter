@@ -57,6 +57,48 @@
   transform: scale(1.05);
 }
 
+.ps-hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.ps-btn {
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+
+  &.ps-btn-primary {
+    background: linear-gradient(135deg, #2c5530, #4a7c59);
+    color: white;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(44, 85, 48, 0.3);
+    }
+  }
+
+  &.ps-btn-secondary {
+    background: transparent;
+    color: #2c5530;
+    border: 2px solid #2c5530;
+
+    &:hover {
+      background: #2c5530;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+}
+
 .ps-hero-video {
   display: flex;
   justify-content: center;
@@ -104,6 +146,15 @@
   
   .ps-hero-text {
     text-align: center;
+  }
+  
+  .ps-hero-buttons {
+    justify-content: center;
+    
+    .ps-btn {
+      width: 100%;
+      max-width: 250px;
+    }
   }
   
   .ps-hero-video-element {
