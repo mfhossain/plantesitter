@@ -1,0 +1,210 @@
+<div class="ps-container">
+  <div class="ps-survey">
+    <h1>Spørgeskema om plantepasning</h1>
+    <p class="ps-intro">
+      Tak fordi du vil hjælpe os me at forstå behovet for plantepasning i Danmark. 
+      Dine svar er anonyme og vil kun bruges til at forbedre vores service. blive brugt til at validere vores ide.
+    </p>
+    
+    <form class="ps-survey-form" (ngSubmit)="onSubmit()">
+      <div class="ps-survey-grid">
+        <!-- Left Column -->
+        <div class="ps-survey-column">
+          <!-- Question 1 -->
+          <div class="ps-question">
+            <h3>1. Hvor mange stueplanter har du derhjemme?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q1" value="ingen" [(ngModel)]="surveyData.q1.ingen">
+                <span class="ps-checkmark"></span>
+                Ingen
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q1" value="1-3" [(ngModel)]="surveyData.q1.oneToThree">
+                <span class="ps-checkmark"></span>
+                1-3 planter
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q1" value="4-7" [(ngModel)]="surveyData.q1.fourToSeven">
+                <span class="ps-checkmark"></span>
+                4-7 planter
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q1" value="8+" [(ngModel)]="surveyData.q1.eightPlus">
+                <span class="ps-checkmark"></span>
+                8+ planter
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="ps-question">
+            <h3>2. Hvor svært synes du det er at passe dine planter, når du er væk på ferie?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q2" value="not-difficult" [(ngModel)]="surveyData.q2.notDifficult">
+                <span class="ps-checkmark"></span>
+                Slet ikke svært - jeg får altid nogen til at hjælpe
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q2" value="little-difficult" [(ngModel)]="surveyData.q2.littleDifficult">
+                <span class="ps-checkmark"></span>
+                Lidt svært - nogle planter overlever ikke
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q2" value="very-difficult" [(ngModel)]="surveyData.q2.veryDifficult">
+                <span class="ps-checkmark"></span>
+                Meget svært - jeg mister ofte planter
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="ps-question">
+            <h3>3. Har du nogensinde mistet planter pga. manglende vanding, mens du var væk?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q3" value="several-times" [(ngModel)]="surveyData.q3.severalTimes">
+                <span class="ps-checkmark"></span>
+                Ja, flere gange
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q3" value="few-times" [(ngModel)]="surveyData.q3.fewTimes">
+                <span class="ps-checkmark"></span>
+                Ja, men kun enkelte gange
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q3" value="never" [(ngModel)]="surveyData.q3.never">
+                <span class="ps-checkmark"></span>
+                Nej, aldrig
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="ps-question">
+            <h3>4. Hvor meget tror du, du i gennemsnit mister i værdi på planter pr. år pga. ferie eller manglende pleje?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q4" value="0" [(ngModel)]="surveyData.q4.zero">
+                <span class="ps-checkmark"></span>
+                0 kr.
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q4" value="100-300" [(ngModel)]="surveyData.q4.hundredToThreeHundred">
+                <span class="ps-checkmark"></span>
+                100-300 kr.
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q4" value="300-600" [(ngModel)]="surveyData.q4.threeHundredToSixHundred">
+                <span class="ps-checkmark"></span>
+                300-600 kr.
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q4" value="600+" [(ngModel)]="surveyData.q4.sixHundredPlus">
+                <span class="ps-checkmark"></span>
+                600+ kr.
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="ps-question">
+            <h3>5. Ville du være villig til at betale for en service, der passer dine planter under ferie?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q5" value="yes-definitely" [(ngModel)]="surveyData.q5.yesDefinitely">
+                <span class="ps-checkmark"></span>
+                Ja, helt sikkert
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q5" value="maybe-depends" [(ngModel)]="surveyData.q5.maybeDepends">
+                <span class="ps-checkmark"></span>
+                Måske - afhænger af prisen
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q5" value="no-not-interested" [(ngModel)]="surveyData.q5.noNotInterested">
+                <span class="ps-checkmark"></span>
+                Nej, ikke interesseret
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="ps-question">
+            <h3>6. Hvilken løsning ville du foretrække?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q6" value="neighbor-friend" [(ngModel)]="surveyData.q6.neighborFriend">
+                <span class="ps-checkmark"></span>
+                En nabo/ven via en service
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q6" value="professional-team" [(ngModel)]="surveyData.q6.professionalTeam">
+                <span class="ps-checkmark"></span>
+                Et professionelt planteteam
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q6" value="automatic-tech" [(ngModel)]="surveyData.q6.automaticTech">
+                <span class="ps-checkmark"></span>
+                Automatisk teknologi (fx selvvanding)
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q6" value="other" [(ngModel)]="surveyData.q6.other">
+                <span class="ps-checkmark"></span>
+                Andet
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="ps-survey-column">
+          <!-- Question 7 -->
+          <div class="ps-question">
+            <h3>7. Hvor ofte rejser du på ferie (uden for hjemmet)?</h3>
+            <div class="ps-options">
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q7" value="0-times" [(ngModel)]="surveyData.q7.zeroTimes">
+                <span class="ps-checkmark"></span>
+                0 gange om året
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q7" value="1-2-times" [(ngModel)]="surveyData.q7.oneToTwoTimes">
+                <span class="ps-checkmark"></span>
+                1-2 gange om året
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q7" value="3-4-times" [(ngModel)]="surveyData.q7.threeToFourTimes">
+                <span class="ps-checkmark"></span>
+                3-4 gange om året
+              </label>
+              <label class="ps-checkbox">
+                <input type="checkbox" name="q7" value="5-plus-times" [(ngModel)]="surveyData.q7.fivePlusTimes">
+                <span class="ps-checkmark"></span>
+                5+ gange om året
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 8 -->
+          <div class="ps-question">
+            <h3>8. Hvis du er interesseret i at høre mere om Plantesitter.dk, kan du skrive din e-mail her:</h3>
+            <div class="ps-email-input">
+              <input 
+                type="email" 
+                name="email" 
+                placeholder="din@email.dk"
+                [(ngModel)]="surveyData.email"
+                class="ps-email-field">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ps-submit-section">
+        <button type="submit" class="ps-submit-btn">Send svar</button>
+      </div>
+    </form>
+  </div>
+</div>
