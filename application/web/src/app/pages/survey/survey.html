@@ -2,9 +2,17 @@
   <div class="ps-survey">
     <h1>Spørgeskema om plantepasning</h1>
     <p class="ps-intro">
-      Tak fordi du vil hjælpe os me at forstå behovet for plantepasning i Danmark. 
-      Dine svar er anonyme og vil kun bruges til at forbedre vores service. blive brugt til at validere vores ide.
+      Tak fordi du vil hjælpe os med at forstå behovet for plantepasning i Danmark. 
+      Dine svar er anonyme og vil kun bruges til at forbedre vores service.
     </p>
+    
+    <!-- Connection Status -->
+    <div class="ps-connection-status" *ngIf="connectionStatus">
+      <p [class.ps-connected]="connectionStatus.includes('✅')" 
+         [class.ps-disconnected]="connectionStatus.includes('❌')">
+        {{ connectionStatus }}
+      </p>
+    </div>
     
     <form class="ps-survey-form" (ngSubmit)="onSubmit()">
       <div class="ps-survey-grid">
@@ -99,12 +107,7 @@
                 <input type="checkbox" name="q4" value="300-600" [(ngModel)]="surveyData.q4.threeHundredToSixHundred">
                 <span class="ps-checkmark"></span>
                 300-600 kr.
-              </label>
-              <label class="ps-checkbox">
-                <input type="checkbox" name="q4" value="600+" [(ngModel)]="surveyData.q4.sixHundredPlus">
-                <span class="ps-checkmark"></span>
-                600+ kr.
-              </label>
+              </label>            
             </div>
           </div>
 
@@ -203,7 +206,19 @@
       </div>
 
       <div class="ps-submit-section">
-        <button type="submit" class="ps-submit-btn">Send svar</button>
+        <!-- Submission Status Messages -->
+        <div *ngIf="submitMessage" class="ps-submit-message" [class.ps-success]="submitSuccess" [class.ps-error]="!submitSuccess">
+          {{ submitMessage }}
+        </div>
+        
+        <button 
+          type="submit" 
+          class="ps-submit-btn" 
+          [disabled]="isSubmitting || connectionStatus.includes('❌')"
+          [class.ps-submitting]="isSubmitting">
+          <span *ngIf="!isSubmitting">Send svar</span>
+          <span *ngIf="isSubmitting">Sender...</span>
+        </button>
       </div>
     </form>
   </div>

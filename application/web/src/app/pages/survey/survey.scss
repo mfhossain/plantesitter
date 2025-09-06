@@ -30,6 +30,30 @@
   color: #6b7280;
 }
 
+.ps-connection-status {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  
+  p {
+    margin: 0;
+    font-weight: 500;
+    
+    &.ps-connected {
+      background-color: #d1fae5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    
+    &.ps-disconnected {
+      background-color: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+  }
+}
+
 .ps-survey-form {
   background: #f8fafc;
   padding: 32px;
@@ -143,6 +167,25 @@
   margin-top: 32px;
 }
 
+.ps-submit-message {
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  
+  &.ps-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+  
+  &.ps-error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+  }
+}
+
 .ps-submit-btn {
   background: #10b981;
   color: white;
@@ -154,14 +197,26 @@
   cursor: pointer;
   transition: all 0.2s ease;
   
-  &:hover {
+  &:hover:not(:disabled) {
     background: #059669;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
   }
   
-  &:active {
+  &:active:not(:disabled) {
     transform: translateY(0);
+  }
+  
+  &:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  &.ps-submitting {
+    background: #6b7280;
+    cursor: wait;
   }
 }
 
