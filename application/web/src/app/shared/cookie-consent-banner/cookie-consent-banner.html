@@ -1,0 +1,26 @@
+<div class="ps-cookie-banner" *ngIf="showBanner">
+  <div class="ps-cookie-content">
+    <div class="ps-cookie-text">
+      <h3>🍪 Vi bruger cookies</h3>
+      <p>
+        Vi bruger cookies til at forbedre din oplevelse på vores hjemmeside, 
+        analysere trafik og til at gemme dine præferencer. 
+        <a routerLink="/cookies-policy" class="ps-cookie-link">Læs mere om vores brug af cookies</a>
+      </p>
+    </div>
+    <div class="ps-cookie-actions">
+      <button 
+        type="button" 
+        class="ps-btn ps-btn-secondary" 
+        (click)="declineCookies()">
+        Afvis
+      </button>
+      <button 
+        type="button" 
+        class="ps-btn ps-btn-primary" 
+        (click)="acceptCookies()">
+        Accepter alle
+      </button>
+    </div>
+  </div>
+</div>

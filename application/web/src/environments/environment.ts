@@ -25,5 +25,13 @@ export const environment = {
         'Det lyder interessant! Kan du fortælle mig mere om det?'
       ]
     }
+  },
+  contact: {
+    // Google Apps Script URL for contact form submissions
+    googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbwNo3fhDvr9qH86BOUZcfCNUjVvzdLOre0-dor1VP-codd5t3gsItS8FHSP_KAxad0/exec',
+    // Email settings
+    recipientEmail: 'info@plantesitter.dk',
+    // Fallback to mailto if Google Apps Script fails
+    useMailtoFallback: true
   }
 };
