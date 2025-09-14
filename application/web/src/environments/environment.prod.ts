@@ -30,7 +30,7 @@ export const environment = {
     // Google Apps Script URL for contact form submissions
     googleAppsScriptUrl: 'https://script.google.com/macros/s/AKfycbzWSTWcSBEvt5w4vdc-gEFsRE7GGPMHaOfJnO3em5U5G3QbyGrweRMumGyCrf0e0Kk/exec',
     // Email settings
-    recipientEmail: 'info@plantesitter.dk',
+    recipientEmail: 'kontakt@plantesitter.dk',
     // Fallback to mailto if Google Apps Script fails
     useMailtoFallback: true
   }
