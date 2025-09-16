@@ -1,0 +1,67 @@
+<div class="ps-container">
+  <div class="ps-survey">
+    <h1>Developer Utilities</h1>
+    
+    <!-- Password Protection Form -->
+    <div *ngIf="showPasswordForm" class="password-form" style="max-width: 400px; margin: 40px auto; padding: 30px; background: #f8f9fa; border-radius: 12px; border: 1px solid #dee2e6; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+      <h3 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">🔒 Access Required</h3>
+      <p style="text-align: center; color: #6c757d; margin-bottom: 25px;">
+        This page is password protected. Please enter the password to continue.
+      </p>
+      
+      <div style="margin-bottom: 20px;">
+        <label for="password" style="display: block; margin-bottom: 8px; font-weight: 500; color: #495057;">Password:</label>
+        <input 
+          type="password" 
+          id="password"
+          [(ngModel)]="passwordInput" 
+          (keyup.enter)="authenticate()"
+          placeholder="Enter password"
+          style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; font-size: 16px; box-sizing: border-box;"
+          [class.error]="passwordError">
+      </div>
+      
+      <div *ngIf="passwordError" style="color: #dc3545; margin-bottom: 15px; font-size: 14px; text-align: center;">
+        {{ passwordError }}
+      </div>
+      
+      <button 
+        (click)="authenticate()" 
+        style="width: 100%; background: #007bff; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 16px; cursor: pointer; font-weight: 500;">
+        🔓 Access Dev Page
+      </button>
+    </div>
+
+    <!-- Main Content (only shown when authenticated) -->
+    <div *ngIf="isAuthenticated">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <p class="ps-intro" style="margin: 0;">
+          This page is for development/testing: Supabase connectivity, data preview, and utilities.
+        </p>
+        <button 
+          (click)="logout()" 
+          style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px;">
+          🚪 Logout
+        </button>
+      </div>
+
+      <!-- Simple Fetch Controls -->
+      <div style="background: #f8f9fa; padding: 16px; margin: 16px 0; border-radius: 8px; border: 1px solid #dee2e6; display: flex; gap: 12px; align-items: center;">
+        <button (click)="testFetch()" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+          🔍 Fetch Plant Owners
+        </button>
+        <span *ngIf="plantownersTestError" style="color: #dc3545;">{{ plantownersTestError }}</span>
+        <span *ngIf="!plantownersTestError && plantownersTestData.length > 0" style="color: #28a745;">Loaded {{ plantownersTestData.length }} records</span>
+      </div>
+
+      <!-- Plant Owners Table (powered by Supabase test fetch) -->
+      <app-plantowner-table 
+        [data]="plantownersTestData"
+        [loading]="isLoadingPlantowners"
+        [error]="plantownersTestError">
+      </app-plantowner-table>
+    </div>
+  </div>
+</div>
+
+

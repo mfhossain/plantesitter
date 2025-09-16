@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -12,17 +12,24 @@ import { RouterModule } from '@angular/router';
 export class CookieConsentBanner implements OnInit {
   showBanner = false;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit() {
-    // Check if user has already made a choice
-    const consent = localStorage.getItem('cookieConsent');
-    if (!consent) {
-      this.showBanner = true;
+    // Only access localStorage in browser environment
+    if (isPlatformBrowser(this.platformId)) {
+      // Check if user has already made a choice
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        this.showBanner = true;
+      }
     }
   }
 
   acceptCookies() {
-    localStorage.setItem('cookieConsent', 'accepted');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('cookieConsent', 'accepted');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     this.showBanner = false;
     
     // Here you can enable analytics, tracking, etc.
@@ -30,8 +37,10 @@ export class CookieConsentBanner implements OnInit {
   }
 
   declineCookies() {
-    localStorage.setItem('cookieConsent', 'declined');
-    localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('cookieConsent', 'declined');
+      localStorage.setItem('cookieConsentDate', new Date().toISOString());
+    }
     this.showBanner = false;
     
     // Disable non-essential cookies

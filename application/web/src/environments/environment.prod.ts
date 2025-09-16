@@ -33,5 +33,29 @@ export const environment = {
     recipientEmail: 'kontakt@plantesitter.dk',
     // Fallback to mailto if Google Apps Script fails
     useMailtoFallback: true
+  },
+  supabase: {
+    // Supabase configuration
+    url: 'https://tkcbzmrkpsisbevcltyp.supabase.co', // Replace with your actual Supabase project URL
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrY2J6bXJrcHNpc2JldmNsdHlwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc4NzcxOTMsImV4cCI6MjA3MzQ1MzE5M30.3fkd5jwPFeRb0jxrYD9XitRgzjqHQ63K7IDlR-ts5rw', // Replace with your actual Supabase anon key
+    // Database configuration
+    database: {
+      // Default schema is 'public' in Supabase
+      schema: 'public',
+      // Database name is automatically determined by your Supabase project
+      // Your project ID is: tkcbzmrkpsisbevcltyp
+      projectId: 'tkcbzmrkpsisbevcltyp',
+      // Add your table names here
+      tables: {
+        plantowner: 'plantowner',
+        // Example: plants: 'plants',
+        // Add your actual table names
+      }
+    }
+  },
+  dev: {
+    // Development page password protection
+    password: 'dev123', // Change this to your desired password
+    enabled: true // Set to false to disable password protection
   }
 };

@@ -1,0 +1,72 @@
+<div class="subscribe-wrapper">
+  <aside class="info-cards">
+    <h2 class="cards-title">Hvorfor blive planteejer?</h2>
+    <div class="card">
+      <h3>Pålidelige plantepassere</h3>
+      <p>Verificerede plantepassere vander, drejer og holder øje med dine planter, mens du er væk.</p>
+    </div>
+    <div class="card">
+      <h3>Fleksible besøg</h3>
+      <p>Vælg besøgsfrekvens efter behov: dagligt, ugentligt eller tilpasset.</p>
+    </div>
+    <div class="card">
+      <h3>Gennemsigtige priser</h3>
+      <p>Klar prissætning uden overraskelser. Betal kun for de besøg, du behøver.</p>
+    </div>
+    <div class="card">
+      <h3>Lokalt fællesskab</h3>
+      <p>Støt planteelskere i dit nærområde og hold din urbane jungle sund.</p>
+    </div>
+  </aside>
+
+  <main class="subscribe-container">
+    <h1>Tilmeld dig</h1>
+    <p class="intro">Indtast din e-mail og nogle oplysninger for at modtage opdateringer.</p>
+
+    <form (ngSubmit)="submit()" #f="ngForm" novalidate>
+      <div class="field">
+        <label>E-mail</label>
+        <input type="email" [(ngModel)]="form.email" name="email" required placeholder="du@eksempel.dk" />
+      </div>
+
+      <div class="field">
+        <label>Navn</label>
+        <input type="text" [(ngModel)]="form.name" name="name" placeholder="Dit navn" />
+      </div>
+
+      <div class="field">
+        <label>Adresse</label>
+        <input type="text" [(ngModel)]="form.address" name="address" placeholder="Vejnavn og nummer" />
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label>Postnummer</label>
+          <input type="text" [(ngModel)]="form.postcode" name="postcode" placeholder="2100" />
+        </div>
+        <div class="field">
+          <label>Land</label>
+          <input type="text" [(ngModel)]="form.country" name="country" placeholder="Danmark" />
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="isSubmitting">{{ isSubmitting ? 'Sender...' : 'Tilmeld' }}</button>
+
+      <p class="error" *ngIf="submitError">❌ {{ submitError }}</p>
+      <p class="success" *ngIf="submitSuccess">✅ Tak! Du er nu tilmeldt.</p>
+    </form>
+  </main>
+</div>
+
+<!-- Confirmation Overlay -->
+<div class="overlay" *ngIf="showOverlay">
+  <div class="overlay-content">
+    <div class="overlay-icon">✅</div>
+    <h2>Tak for din tilmelding!</h2>
+    <p>Vi har modtaget dine oplysninger. Vi kontakter dig snarest muligt.</p>
+    <button (click)="closeOverlay()">Luk</button>
+  </div>
+  <div class="overlay-backdrop" (click)="closeOverlay()"></div>
+</div>
+
+
