@@ -4,7 +4,7 @@
   .ps-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1rem 0;
   }
 
   .ps-ferie-content {
@@ -103,7 +103,7 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .ps-ferie-uden-bekymringer {
-    padding: 60px 0;
+    padding: 24px 0 60px;
 
     .ps-ferie-content {
       grid-template-columns: 1fr;

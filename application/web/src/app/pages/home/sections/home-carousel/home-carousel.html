@@ -1,0 +1,34 @@
+<section class="ps-hero">
+  <div class="ps-container">
+    <div class="carousel">
+      <button class="nav prev" (click)="prev()" aria-label="Forrige slide">‹</button>
+      <div class="viewport" (touchstart)="onTouchStart($event)" (touchmove)="onTouchMove($event)" (touchend)="onTouchEnd($event)">
+        <div class="track" [style.transform]="'translateX(' + (-(100 / slides.length) * currentIndex) + '%)'
+          " [style.width]="(slides.length * 100) + '%'">
+          <div class="slide" *ngFor="let slide of slides; index as i" [style.width]="(100 / slides.length) + '%'">
+            <div class="ps-hero-bg" [style.backgroundImage]="'url(' + slide.imageSrc + ')'">
+              <div class="ps-hero-overlay"></div>
+              <div class="ps-hero-content">
+                <div class="ps-hero-text">
+                  <h1>{{ slide.title }}</h1>
+                  <div class="ps-hero-buttons">
+                    <a routerLink="/subscribe" class="ps-btn ps-btn-primary">Tilmeld</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="nav next" (click)="next()" aria-label="Næste slide">›</button>
+    </div>
+
+    <div class="dots">
+      <button *ngFor="let _ of slides; index as i" [class.active]="i === currentIndex" (click)="goTo(i)"
+        [attr.aria-label]="'Gå til slide ' + (i + 1)"></button>
+    </div>
+  </div>
+  
+</section>
+
+

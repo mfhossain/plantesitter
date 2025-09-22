@@ -1,5 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SupabaseService } from '../../shared/supabase.service';
@@ -25,7 +27,12 @@ export class Subscribe {
     country: ''
   };
 
-  constructor(private supabaseService: SupabaseService, private cdr: ChangeDetectorRef, private router: Router) {}
+  constructor(
+    private supabaseService: SupabaseService,
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   submit() {
     this.submitError = '';
@@ -59,6 +66,8 @@ export class Subscribe {
         this.showOverlay = true;
         // Ensure view updates immediately
         this.cdr.detectChanges();
+        // Fire-and-forget email via SendGrid
+        this.sendConfirmationEmail(result?.data?.[0]);
       },
       error: (err) => {
         this.isSubmitting = false;
@@ -75,6 +84,39 @@ export class Subscribe {
   closeOverlay() {
     this.showOverlay = false;
     this.router.navigateByUrl('/');
+  }
+
+  private sendConfirmationEmail(inserted?: any) {
+    try {
+      const sg = environment.sendgrid;
+      if (!sg?.apiKey) {
+        console.warn('SendGrid API key not configured. Skipping email.');
+        return;
+      }
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${sg.apiKey}`,
+        'Content-Type': 'application/json'
+      });
+      const toEmail = this.form.email || inserted?.email || sg.toAdminEmail;
+      const payload = {
+        personalizations: [
+          { to: [{ email: toEmail }], subject: 'Tak for din tilmelding' }
+        ],
+        from: { email: sg.fromEmail, name: sg.fromName },
+        content: [
+          {
+            type: 'text/plain',
+            value: `Hej ${this.form.name || inserted?.name || ''}\n\nTak for din tilmelding til PlanteSitter.\n\nVenlig hilsen\nPlanteSitter`
+          }
+        ]
+      };
+      this.http.post('https://api.sendgrid.com/v3/mail/send', payload, { headers }).subscribe({
+        next: () => {},
+        error: (e) => console.warn('SendGrid error (ignored):', e?.status || e)
+      });
+    } catch (e) {
+      console.warn('SendGrid exception (ignored):', e);
+    }
   }
 }
 

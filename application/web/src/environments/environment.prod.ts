@@ -57,5 +57,11 @@ export const environment = {
     // Development page password protection
     password: 'dev123', // Change this to your desired password
     enabled: true // Set to false to disable password protection
+  },
+  sendgrid: {
+    apiKey: 'REPLACSG.qf6uWWXzThWUuvo_1HI7DQ.MwO4yvbvUOA7nGPZvcEHBzWcQPIrHcTtVsE7zZIRwD4E_WITH_SENDGRID_KEY',
+    fromEmail: 'noreply@plantesitter.dk',
+    fromName: 'PlanteSitter',
+    toAdminEmail: 'kontakt@plantesitter.dk'
   }
 };

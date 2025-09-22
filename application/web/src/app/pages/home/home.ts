@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HomeHero } from './sections/home-hero/home-hero';
+import { HomeCarousel } from './sections/home-carousel/home-carousel';
 import { HomeFindPlantepasser } from './sections/home-find-plantepasser/home-find-plantepasser';
 import { HomeTrygPasning } from './sections/home-tryg-pasning/home-tryg-pasning';
 import { HomeFerieUdenBekymringer } from './sections/home-ferie-uden-bekymringer/home-ferie-uden-bekymringer';
@@ -11,7 +11,7 @@ import { HomeCta } from './sections/home-cta/home-cta';
   selector: 'app-home',
   standalone: true,
   imports: [
-    HomeHero, 
+    HomeCarousel, 
     HomeFindPlantepasser, 
     HomeTrygPasning, 
     HomeFerieUdenBekymringer, 
