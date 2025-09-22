@@ -59,7 +59,7 @@ export const environment = {
     enabled: true // Set to false to disable password protection
   },
   sendgrid: {
-    apiKey: 'REPLACSG.qf6uWWXzThWUuvo_1HI7DQ.MwO4yvbvUOA7nGPZvcEHBzWcQPIrHcTtVsE7zZIRwD4E_WITH_SENDGRID_KEY',
+    apiKey: 'REPLAC_WITH_SENDGRID_KEY',
     fromEmail: 'noreply@plantesitter.dk',
     fromName: 'PlanteSitter',
     toAdminEmail: 'kontakt@plantesitter.dk'
